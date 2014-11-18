@@ -12,7 +12,7 @@ public class BookReviewScrapper {
 
 	public static String getReview(String website, String term) throws IOException{
 		Document doc = Jsoup.connect(website+"/"+term+"?from_search=true").get();
-		int a =10;
+		
 		//String s = (doc.toString().substring(doc.toString().indexOf("imdbRating"))).split(",")[0];
 		System.out.println(doc.toString());
 		return doc.toString();
