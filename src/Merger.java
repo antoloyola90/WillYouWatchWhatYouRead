@@ -10,34 +10,23 @@ import com.google.gson.JsonSyntaxException;
 
 public class Merger {
 	
-	public static String adaptationFile = "./src/freebaseExtracts/mediaAdaptationExtract.txt";
-	public static String adaptedWorksFile = "./src/freebaseExtracts/mediaAdaptedWorksExtract.txt";
+	public static String root = "./src/freebaseExtracts/";
+	public static String adaptationFile = "mediaAdaptationExtract.txt";
+	public static String adaptedWorksFile = "mediaAdaptedWorksExtract.txt";
 	
-	public static void main(String[] args) throws IOException {
+	public static void main(String[] args) throws Exception {
 		// TODO Auto-generated method stub
 		
-		createInputFiles();
-		
-		
-		BookReviewScrapper b = new BookReviewScrapper();
-		MovieReviewScrapper m = new MovieReviewScrapper();
-		
-		String website = "http://www.goodreads.com/book/show";
-		String term = "5.Harry_Potter_and_the_Prisoner_of_Azkaban";
-		
-		//String bookReview = b.getReview(website, term);
-		
-		website = "http://www.omdbapi.com/";
-		term = "Harry+Potter+And+the+Prisoner+of+Azkaban";
-		
-		//String movieReview = m.getReview(website, term);
+		//createInputFiles();
+		MovieReviewScrapper.updateFileWithReviews(adaptationFile);
+		MovieReviewScrapper.updateFileWithReviews(adaptedWorksFile);
 		
 	}
 	
 	public static void createInputFiles() throws JsonSyntaxException, ParseException, IOException{
-		(new File(adaptationFile)).delete();
+		(new File(root + adaptationFile)).delete();
 		FreebaseExtractor.getMediaAdaptation("cursor");
-		FileWriter fw = new FileWriter(adaptationFile,true);
+		FileWriter fw = new FileWriter(root + adaptationFile,true);
 		if(FreebaseExtractor.results != null){
            for (Object r : FreebaseExtractor.results){
         	  fw.write(((JsonObject)r).toString() + "\n");
@@ -45,9 +34,9 @@ public class Merger {
        }
 		fw.close();
 		
-		(new File(adaptedWorksFile)).delete();
+		(new File(root + adaptedWorksFile)).delete();
 		FreebaseExtractor.getMediaAdaptedWork("cursor");
-		fw = new FileWriter(adaptedWorksFile,true);
+		fw = new FileWriter(root + adaptedWorksFile,true);
 		if(FreebaseExtractor.results != null){
            for (Object r : FreebaseExtractor.results){
         	  fw.write(((JsonObject)r).toString() + "\n");
@@ -56,7 +45,4 @@ public class Merger {
 		fw.close();
 	}
 	
-	public static void matchMovie(){
-		
-	}
 }
