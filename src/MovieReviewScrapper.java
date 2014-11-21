@@ -22,7 +22,8 @@ public class MovieReviewScrapper {
 		// TODO Auto-generated method stub
 		
 		String website = "http://www.omdbapi.com/";
-		String term = "Harry+Potter+And+the+Prisoner+of+Azkaban";
+		//String term = "Harry+Potter+And+the+Prisoner+of+Azkaban";
+		String term = "king+of+texas";
 		
 		getReview(website, term);
 		
