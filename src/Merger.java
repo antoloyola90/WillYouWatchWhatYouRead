@@ -18,8 +18,23 @@ public class Merger {
 		// TODO Auto-generated method stub
 		
 		//createInputFiles();
-		//MovieReviewScrapper.updateFileWithReviews(adaptationFile);
-		//MovieReviewScrapper.updateFileWithReviews(adaptedWorksFile);
+		//MovieReviewScrapper.updateFileWithReviews(adaptationFile, 0, 100000);
+		//MovieReviewScrapper.updateFileWithReviews(adaptedWorksFile, 0, 100000);
+		
+		//BookReviewScrapper.updateFileWithReviews(adaptationFile, 0, 100000);
+		//BookReviewScrapper.updateFileWithReviews(adaptedWorksFile, 0, 100000);
+		
+		FindAverageMovieReview.getTheNumbers(adaptationFile);
+		FindAverageMovieReview.getTheNumbers(adaptedWorksFile);
+		
+		FindAverageMovieReview.makeMovieReviewUpdates(adaptationFile);
+		FindAverageMovieReview.makeMovieReviewUpdates(adaptedWorksFile);
+		
+		FindAverageBookReview.getTheNumbers(adaptationFile);
+		FindAverageBookReview.getTheNumbers(adaptedWorksFile);
+		
+		FindAverageBookReview.makeBookReviewUpdates(adaptationFile);
+		FindAverageBookReview.makeBookReviewUpdates(adaptedWorksFile);
 		
 	}
 	

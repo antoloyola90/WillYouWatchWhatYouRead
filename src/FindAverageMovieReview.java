@@ -94,11 +94,14 @@ public class FindAverageMovieReview {
 	
 	public static void main(String[] args) throws Exception {
 		
-		getTheNumbers(Merger.adaptationFile);
+		//getTheNumbers(Merger.adaptationFile);
+		//System.out.println((Max - Min)/10);
+		//Thread.sleep(50000);
+		//makeMovieReviewUpdates(Merger.adaptationFile);
+		getTheNumbers(Merger.adaptedWorksFile);
 		System.out.println((Max - Min)/10);
 		//Thread.sleep(50000);
-		makeMovieReviewUpdates(Merger.adaptationFile);
-		
+		makeMovieReviewUpdates(Merger.adaptedWorksFile);
 		
 	}
 

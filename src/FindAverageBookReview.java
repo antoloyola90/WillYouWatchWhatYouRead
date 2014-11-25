@@ -95,10 +95,12 @@ public class FindAverageBookReview {
 	
 	public static void main(String[] args) throws Exception {
 		
-		getTheNumbers(Merger.adaptationFile);
+		//getTheNumbers(Merger.adaptationFile);
 		//Thread.sleep(50000);
-		makeBookReviewUpdates(Merger.adaptationFile);
-		
+		//makeBookReviewUpdates(Merger.adaptationFile);
+		getTheNumbers(Merger.adaptedWorksFile);
+		//Thread.sleep(50000);
+		makeBookReviewUpdates(Merger.adaptedWorksFile);
 		
 	}
 
