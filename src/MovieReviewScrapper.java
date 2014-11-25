@@ -42,7 +42,7 @@ public class MovieReviewScrapper {
 	
 	public static void updateFileWithReviews(String filename, int startLine, int endLine) throws Exception{
 		String website = "http://www.omdbapi.com/";
-		String outputFilename = Merger.root + filename.split("[.]")[0]+"withMovieReviews1.txt";
+		String outputFilename = Merger.root + filename.split("[.]")[0]+"withMovieReviews.txt";
 		filename = Merger.root + filename;
 		BufferedReader reader = Files.newBufferedReader(Paths.get(filename), StandardCharsets.UTF_8);
 		BufferedWriter writer = Files.newBufferedWriter(Paths.get(outputFilename), StandardCharsets.UTF_8);
