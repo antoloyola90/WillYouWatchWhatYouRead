@@ -18,29 +18,29 @@ import org.jsoup.select.Elements;
 import com.google.api.client.util.StringUtils;
 
 
-public class FindAverageMovieReview {
+public class FindAverageBookReview {
 	
 	static double Max = 0;
 	static double Min = 100;
 	static double Average = 0;
     
 	public static void getTheNumbers(String filename) throws Exception{
-		filename = Merger.root + filename.split("[.]")[0]+"withMovieReviewsWithBookReviews.txt";;
+		filename = Merger.root + filename.split("[.]")[0]+"updatedMovieReviewsWithBookReviews.txt";;
 		BufferedReader reader = Files.newBufferedReader(Paths.get(filename), StandardCharsets.UTF_8);
 			String line = null;
 		      
 		      int cnt = 0;
 		      while ((line = reader.readLine()) != null) {
 		    	  
-		        String movieRating = null;
+		        String bookRating = null;
 		        for(String s : line.split(",")){
-		        	if((s.split(":")[0].contains("imdbRating"))){
-		        		movieRating = s.split(":")[1].substring(1, s.split(":")[1].length()-1);
-		        		//System.out.println(movieRating);
-		        		if(!movieRating.contains("N")){
-			        		Average += Double.parseDouble(movieRating);
-			        		Max = Math.max(Max, Double.parseDouble(movieRating));
-			        		Min = Math.min(Min, Double.parseDouble(movieRating));
+		        	if((s.split(":")[0].contains("bookRating"))){
+		        		bookRating = s.split(":")[1].substring(1, s.split(":")[1].length()-1);
+		        		System.out.println(bookRating);
+		        		if(!bookRating.contains("N")){
+			        		Average += Double.parseDouble(bookRating);
+			        		Max = Math.max(Max, Double.parseDouble(bookRating));
+			        		Min = Math.min(Min, Double.parseDouble(bookRating));
 			        		cnt++;
 			        	}
 		        	}
@@ -54,9 +54,9 @@ public class FindAverageMovieReview {
 		    
 	}
 	
-	public static void makeMovieReviewUpdates(String filename) throws Exception{
-		String outputFile = Merger.root + filename.split("[.]")[0]+"updatedMovieReviewsWithBookReviews.txt";
-		filename = Merger.root + filename.split("[.]")[0]+"withMovieReviewsWithBookReviews.txt";
+	public static void makeBookReviewUpdates(String filename) throws Exception{
+		String outputFile = Merger.root + filename.split("[.]")[0]+"updatedMovieReviewsUpdatedBookReviews.txt";
+		filename = Merger.root + filename.split("[.]")[0]+"updatedMovieReviewsWithBookReviews.txt";
 		
 		BufferedWriter writer = Files.newBufferedWriter(Paths.get(outputFile), StandardCharsets.UTF_8);
 		
@@ -66,14 +66,14 @@ public class FindAverageMovieReview {
 		      while ((line = reader.readLine()) != null) {
 		    	String str = "";  
 		        for(String s : line.split(",")){
-		        	if((s.split(":")[0].contains("imdbRating"))){
+		        	if((s.split(":")[0].contains("bookRating"))){
 		        		String temp = s.split(":")[1].substring(1, s.split(":")[1].length()-1);
 		        		if(!temp.contains("N")){
 			        		int cnt = 1;
 			        		for(double i = Min; i < Max ; i+= (Max - Min)/10){
 			        			cnt++;
 			        			if(Double.parseDouble(temp) > i && Double.parseDouble(temp) < i + (Max-Min)/10){
-			        				s = ", redoneMovieRating : " + cnt + "(" + Double.parseDouble(temp) +"), ";
+			        				s = ", redoneBookRating : " + cnt + "(" + Double.parseDouble(temp) +"), ";
 			        			}
 			        		}
 		        		str += s;
@@ -85,6 +85,7 @@ public class FindAverageMovieReview {
 		        	}
 			        	
 			    }
+		        System.out.println(str);
 		        writer.write(str);
 		        writer.newLine();
 		      }
@@ -95,9 +96,8 @@ public class FindAverageMovieReview {
 	public static void main(String[] args) throws Exception {
 		
 		getTheNumbers(Merger.adaptationFile);
-		System.out.println((Max - Min)/10);
 		//Thread.sleep(50000);
-		makeMovieReviewUpdates(Merger.adaptationFile);
+		makeBookReviewUpdates(Merger.adaptationFile);
 		
 		
 	}
