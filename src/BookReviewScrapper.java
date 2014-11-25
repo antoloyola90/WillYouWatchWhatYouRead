@@ -115,8 +115,8 @@ public class BookReviewScrapper {
 		String term = "Harry+Potter+and+the+Prisoner+of+Azkaban";
 		
 		//getReview(website, term);
-		
-		updateFileWithReviews(Merger.adaptationFile, 0, 100000);
+		updateFileWithReviews(Merger.adaptedWorksFile, 0, 100000);
+		//updateFileWithReviews(Merger.adaptationFile, 0, 100000);
 		//Document doc = Jsoup.connect("http://www.city-data.com/zips/"+ String.format("%05d",i) +".html").get();
 			
 			
