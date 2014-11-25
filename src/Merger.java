@@ -18,8 +18,8 @@ public class Merger {
 		// TODO Auto-generated method stub
 		
 		//createInputFiles();
-		MovieReviewScrapper.updateFileWithReviews(adaptationFile);
-		MovieReviewScrapper.updateFileWithReviews(adaptedWorksFile);
+		//MovieReviewScrapper.updateFileWithReviews(adaptationFile);
+		//MovieReviewScrapper.updateFileWithReviews(adaptedWorksFile);
 		
 	}
 	
