@@ -67,12 +67,16 @@ public class FindAverageBookReview {
 		    	String str = "";  
 		        for(String s : line.split(",")){
 		        	if((s.split(":")[0].contains("bookRating"))){
-		        		String temp = s.split(":")[1].substring(1, s.split(":")[1].length()-1);
+		        		
+		        		String temp = s.split(":")[1].trim();
+		        		System.out.println(s + "-" +temp +"-"+ line);
+		        		//Thread.sleep(5000);
 		        		if(!temp.contains("N")){
 			        		int cnt = 1;
 			        		for(double i = Min; i < Max ; i+= (Max - Min)/10){
 			        			cnt++;
-			        			if(Double.parseDouble(temp) > i && Double.parseDouble(temp) < i + (Max-Min)/10){
+			        			if(Double.parseDouble(temp) >= i && Double.parseDouble(temp) <= i + (Max-Min)/10){
+			        				
 			        				s = ", redoneBookRating : " + cnt + "(" + Double.parseDouble(temp) +"), ";
 			        			}
 			        		}
