@@ -54,17 +54,17 @@ public class BookReviewScrapper {
 	}
 	public static void updateFileWithReviews(String filename, int startLine, int endLine) throws Exception{
 		String website = "https://www.goodreads.com/book/title.xml?key=zE7cvGiOo6mgMMwf7ReyA&title=";
-		String outputFilename = Merger.root + filename.split("[.]")[0]+"withMovieReviewsWithBookReviews.txt";
-		filename = Merger.root + filename.split("[.]")[0] +"withMovieReviews.txt";
+		String outputFilename = Merger.root + "combinedBothReviews.txt";
 		BufferedReader reader = Files.newBufferedReader(Paths.get(filename), StandardCharsets.UTF_8);
 		BufferedWriter writer = Files.newBufferedWriter(Paths.get(outputFilename), StandardCharsets.UTF_8);
 		
-		      String line = null;
-		      int cnt=0;
-		      //while ((line = reader.readLine()) != null && cnt<startLine && cnt!=startLine) {
-		    	//  cnt++;
-		      //}
-		      while ((line = reader.readLine()) != null /*&& startLine<endLine*/ ) {
+		String line = null;
+	      int cnt=0;
+	      while ((line = reader.readLine()) != null && cnt<startLine && cnt!=startLine) {
+	    	  cnt++;
+	      }
+		      
+		      while ((line = reader.readLine()) != null  && startLine<endLine) {
 		    	  
 		        //process each line in some way
 		    	String review = null;
@@ -98,7 +98,7 @@ public class BookReviewScrapper {
 	        	
 		        if(review != null){
 		        	review = "bookRating : " + review;
-		        	if (startLine%200 == 0)
+		        	//if (startLine%200 == 0)
 		        		System.out.println(startLine + " = " + line + ", " + review);
 		        	writer.write(line + ", " + review);
 		        	writer.newLine();
@@ -109,25 +109,7 @@ public class BookReviewScrapper {
 		    
 	}
 	public static void main(String[] args) throws Exception {
-		// TODO Auto-generated method stub
-		
-		String website = "https://www.goodreads.com/book/title.xml?key=zE7cvGiOo6mgMMwf7ReyA&title=";
-		String term = "Harry+Potter+and+the+Prisoner+of+Azkaban";
-		
-		//getReview(website, term);
-		updateFileWithReviews(Merger.adaptedWorksFile, 0, 100000);
-		//updateFileWithReviews(Merger.adaptationFile, 0, 100000);
-		//Document doc = Jsoup.connect("http://www.city-data.com/zips/"+ String.format("%05d",i) +".html").get();
-			
-			
-			//System.out.println(doc.title().split(" ")[0]);
-			
-			//Elements links = doc.select("div div div table tbody tr td div div table tbody tr td blockquote");
-			
-			//System.out.println("i = "+ i + ", " + links.first().text());
-			
-		
-		
+		updateFileWithReviews(Merger.root + "combined.txt", 1297, 100000);
 	}
 
 }

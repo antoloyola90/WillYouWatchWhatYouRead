@@ -12,8 +12,8 @@ public class Combiner {
 	static String [] array2 = new String [10000];
 	public static void main(String[] args) throws IOException {
 		// TODO Auto-generated method stub
-		String file1 = Merger.root + "mediaAdaptationExtractupdatedMovieReviewsUpdatedBookReviews.txt";
-		String file2 = Merger.root + "mediaAdaptedWorksExtractupdatedMovieReviewsUpdatedBookReviews.txt";
+		String file1 = Merger.root + "mediaAdaptationExtractwithMovieReviews.txt";
+		String file2 = Merger.root + "mediaAdaptedWorksExtractwithMovieReviews.txt";
 		int cnt1, cnt2;
 		BufferedReader reader1 = Files.newBufferedReader(Paths.get(file1), StandardCharsets.UTF_8);
 		
