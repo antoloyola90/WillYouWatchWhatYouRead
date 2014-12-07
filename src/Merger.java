@@ -44,7 +44,7 @@ public class Merger {
 		FileWriter fw = new FileWriter(root + adaptationFile,true);
 		if(FreebaseExtractor.results != null){
            for (Object r : FreebaseExtractor.results){
-        	  fw.write(((JsonObject)r).toString() + "\n");
+        	   	fw.write(((JsonObject)r).toString() + "\n");
            }
        }
 		fw.close();

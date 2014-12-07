@@ -22,8 +22,11 @@ public class MovieReviewScrapper {
 		Document doc = Jsoup.connect(website+"?t="+term2+"&y=&plot=short&r=json").get();
 		
 		String s = null;
+		String genre = null;
 		try{
-			s = (doc.toString().substring(doc.toString().indexOf("imdbRating"))).split(",")[0];
+			s = (doc.toString().substring(doc.toString().indexOf("\"imdbRating\""))).split(",")[0];
+			genre = ((doc.toString().substring(doc.toString().indexOf("\"Genre\""))));
+			genre = genre.split("\"")[0] + genre.split("\"")[1] + genre.split("\"")[2] + genre.split("\"")[3].replaceAll(", ", "###");
 			//System.out.println(s + ", (1) " + term2);
 		}catch(StringIndexOutOfBoundsException e){
 			
@@ -31,12 +34,16 @@ public class MovieReviewScrapper {
 		if(s == null){
 			doc = Jsoup.connect(website+"?t="+term1+"&y=&plot=short&r=json").get();
 			try{
-				s = (doc.toString().substring(doc.toString().indexOf("imdbRating"))).split(",")[0];
+				s = (doc.toString().substring(doc.toString().indexOf("\"imdbRating\""))).split(",")[0];
+				genre = ((doc.toString().substring(doc.toString().indexOf("\"Genre\""))));
+				genre = genre.split("\"")[0] + genre.split("\"")[1] + genre.split("\"")[2] + genre.split("\"")[3].replaceAll(", ", "###");
 				//System.out.println(s + ", (2) " + term1);
 			}catch(StringIndexOutOfBoundsException e){
 				
 			}
 		}
+		if(genre!=null)
+			return s + ", " + genre;
 		return s;
 	}
 	
@@ -84,7 +91,7 @@ public class MovieReviewScrapper {
 		        review = getReview(website, movieName, name);
 	        	
 		        if(review != null){
-		        	if (startLine%200 == 0)
+		        	//if (startLine%200 == 0)
 		        		System.out.println(startLine + " = " + line + ", " + review);
 		        	writer.write(line + ", " + review);
 		        	writer.newLine();
@@ -103,8 +110,8 @@ public class MovieReviewScrapper {
 		//(new File(Merger.root + Merger.adaptedWorksFile)).delete();
 		//(new File(Merger.root + Merger.adaptationFile)).delete();
 		//getReview(website, term);
-		updateFileWithReviews(Merger.adaptationFile, 3261, 100000);
-		//updateFileWithReviews(Merger.adaptedWorksFile, 0, 100000);
+		//updateFileWithReviews(Merger.adaptationFile, 3490, 1000000);
+		updateFileWithReviews(Merger.adaptedWorksFile, 5740, 100000);
 		//Document doc = Jsoup.connect("http://www.city-data.com/zips/"+ String.format("%05d",i) +".html").get();
 			
 			

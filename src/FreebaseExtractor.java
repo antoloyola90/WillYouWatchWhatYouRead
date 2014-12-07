@@ -33,7 +33,7 @@ public class FreebaseExtractor{
 	       System.out.println(json_data.get("cursor").getAsString());
 	       cursor = json_data.get("cursor").getAsString();
 	       if(!cursor.equalsIgnoreCase("false"))
-	    	   getMediaAdaptation("cursor=" + cursor);
+	    	   	getMediaAdaptation("cursor=" + cursor);
 	       
 //	       int cnt = 0;
 //	       if(results != null)
