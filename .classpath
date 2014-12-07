@@ -43,5 +43,7 @@
 	<classpathentry kind="lib" path="/Users/anto/Documents/workspace/google-http-java-client/libs-sources/transaction-api-1.1-sources.jar"/>
 	<classpathentry kind="lib" path="/Users/anto/Documents/workspace/google-http-java-client/libs-sources/xpp3-1.1.4c-sources.jar"/>
 	<classpathentry kind="lib" path="/Users/anto/Documents/workspace/json_simple.jar"/>
+	<classpathentry kind="lib" path="/Users/anto/Documents/workspace/pig-0.14.0-core-h1.jar"/>
+	<classpathentry kind="lib" path="/Users/anto/Documents/workspace/pig-0.14.0-core-h2.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>

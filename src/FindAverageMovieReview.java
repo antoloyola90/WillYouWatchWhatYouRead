@@ -25,7 +25,7 @@ public class FindAverageMovieReview {
 	static double Average = 0;
     
 	public static void getTheNumbers(String filename) throws Exception{
-		filename = Merger.root + filename.split("[.]")[0]+"withMovieReviewsWithBookReviews.txt";;
+		filename = Merger.root + filename;
 		BufferedReader reader = Files.newBufferedReader(Paths.get(filename), StandardCharsets.UTF_8);
 			String line = null;
 		      
@@ -55,8 +55,8 @@ public class FindAverageMovieReview {
 	}
 	
 	public static void makeMovieReviewUpdates(String filename) throws Exception{
-		String outputFile = Merger.root + filename.split("[.]")[0]+"updatedMovieReviewsWithBookReviews.txt";
-		filename = Merger.root + filename.split("[.]")[0]+"withMovieReviewsWithBookReviews.txt";
+		String outputFile = Merger.root + "combinedMovieUpdated.txt";
+		filename = Merger.root + filename;
 		
 		BufferedWriter writer = Files.newBufferedWriter(Paths.get(outputFile), StandardCharsets.UTF_8);
 		
@@ -81,7 +81,7 @@ public class FindAverageMovieReview {
 		        		//System.out.println(movieRating);
 		        	}
 		        	else {
-		        		str += s;
+		        		str += "," + s;
 		        	}
 			        	
 			    }
@@ -98,10 +98,10 @@ public class FindAverageMovieReview {
 		//System.out.println((Max - Min)/10);
 		//Thread.sleep(50000);
 		//makeMovieReviewUpdates(Merger.adaptationFile);
-		getTheNumbers(Merger.adaptedWorksFile);
+		getTheNumbers("combinedBothReviews.txt");
 		System.out.println((Max - Min)/10);
 		//Thread.sleep(50000);
-		makeMovieReviewUpdates(Merger.adaptedWorksFile);
+		makeMovieReviewUpdates("combinedBothReviews.txt");
 		
 	}
 
