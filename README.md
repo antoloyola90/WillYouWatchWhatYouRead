@@ -28,6 +28,9 @@ Merger.java
 
 ***FindTop5.java will take top 5 output results and get some images to make the slideshows more visual. 
 
+
+https://github.com/antoloyola90/WillYouWatchWhatYouReadMapperReducer
+
 ********
 Mapper/Reducer 1 - Takes combinedFile and finds which are the top 5 genres to make movies from books
 ********
@@ -38,3 +41,5 @@ Mapper/Reducer 3 - Takes output from Mapper/Reduce 1 and finds which does better
 Reducer 4 - Takes output from Mapper/Reduce 1 and finds which does better in the top 5 anamolies(Movies or Books)
 ********
 
+The PIG commands used have been added in the WillYouWatchWhatYouReadMapperReducer code under PIG folder. 
+(This uses Reducer outputs to get the top 5 in each output) 
